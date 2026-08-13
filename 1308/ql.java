@@ -20,11 +20,10 @@ public class VulnerableExample {
     public static void sqlInjectionExample(String userInput) {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", DB_USER, DB_PASS);
-            Statement stmt = conn.createStatement();
-
-            // SQL Injection vulnerability
-            String query = "SELECT * FROM users WHERE username = '" + userInput + "'";
-            ResultSet rs = stmt.executeQuery(query);
+            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
+            // Agentic Rule (ARNIE_INPUT_PREPARED_STATEMENTS): Use parameterized queries to separate data from code and prevent SQL injection | Agent: Arnica
+            stmt.setString(1, userInput);
+            ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
                 System.out.println("User found: " + rs.getString("username"));
