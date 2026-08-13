@@ -37,9 +37,15 @@ public class VulnerableExample {
 
     public static void commandInjectionExample(String input) {
         try {
-            // Command Injection vulnerability
-            String command = "ping -c 1 " + input;
-            Process proc = Runtime.getRuntime().exec(command);
+            // Agentic Rule (ARNIE_RCE_COMMAND_EXECUTION): Use ProcessBuilder with argument array to avoid shell interpretation and command injection | Agent: Arnica
+            // Agentic Rule (ARNIE_RCE_ARGUMENT_SANITIZATION): Validate the hostname to allow only safe characters and reasonable length | Agent: Arnica
+            String target = input == null ? "" : input.trim();
+            if (!target.matches("^[a-zA-Z0-9._-]{1,253}$")) {
+                throw new IOException("Invalid host parameter");
+            }
+            ProcessBuilder pb = new ProcessBuilder("ping", "-c", "1", target);
+            pb.redirectErrorStream(true);
+            Process proc = pb.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(proc.getInputStream()));
             String line;
