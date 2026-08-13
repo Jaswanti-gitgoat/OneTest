@@ -16,14 +16,13 @@ public class VulnerableExample {
         insecureRandomExample();
         pathTraversalExample(userInput);
     }
-
     public static void sqlInjectionExample(String userInput) {
         try {
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", DB_USER, DB_PASS);
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
             // Agentic Rule (ARNIE_INPUT_PREPARED_STATEMENTS): Use parameterized queries to separate data from code and prevent SQL injection | Agent: Arnica
-            stmt.setString(1, userInput);
-            ResultSet rs = stmt.executeQuery();
+            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM users WHERE username = ?");
+            pstmt.setString(1, userInput);
+            ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
                 System.out.println("User found: " + rs.getString("username"));
