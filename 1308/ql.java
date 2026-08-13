@@ -59,8 +59,8 @@ public class VulnerableExample {
     }
 
     public static void insecureRandomExample() {
-        // Insecure randomness
-        Random rand = new Random();
+        // Agentic Rule (ARNIE_CRYPTO_RANDOM_GENERATION): Replace java.util.Random with SecureRandom for cryptographically secure token generation | Agent: Arnica
+        java.security.SecureRandom rand = new java.security.SecureRandom();
         int token = rand.nextInt();
         System.out.println("Generated token: " + token);
     }
