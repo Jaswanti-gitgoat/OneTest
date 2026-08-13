@@ -67,9 +67,23 @@ public class VulnerableExample {
 
     public static void pathTraversalExample(String filename) {
         try {
-            // Path traversal vulnerability
-            File file = new File("/var/data/" + filename);
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            // Agentic Rule (ARNIE_PATH_INPUT_NORMALIZATION): Canonicalize user-supplied path before validation to prevent bypass via ../ or symbolic links | Agent: Arnica
+            File baseDir = new File("/var/data/");
+            File requested = new File(baseDir, filename);
+            String baseCanonical = baseDir.getCanonicalPath();
+            String reqCanonical = requested.getCanonicalPath();
+            // Agentic Rule (ARNIE_PATH_BOUNDARY_CHECKING): Ensure resolved path remains within allowed base directory | Agent: Arnica
+            if (!reqCanonical.startsWith(baseCanonical + File.separator)) {
+                System.err.println("Invalid filename: outside allowed directory");
+                return;
+            }
+            // Agentic Rule (ARNIE_PATH_FILENAME_SANITIZATION): Reject dangerous path sequences and control characters in filenames | Agent: Arnica
+            if (filename.contains("..") || filename.contains("/") || filename.contains("\\") || filename.length() == 0) {
+                System.err.println("Invalid filename provided");
+                return;
+            }
+
+            BufferedReader reader = new BufferedReader(new FileReader(reqCanonical));
 
             String line;
             while ((line = reader.readLine()) != null) {
