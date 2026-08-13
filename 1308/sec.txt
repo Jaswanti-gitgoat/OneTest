@@ -1,5 +1,62 @@
+# AWS Credentials
+AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
+AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+# Google API Key
+GOOGLE_API_KEY=AIzaSyA-EXAMPLE-1234567890abcdef
+
+# GitHub Token
+GITHUB_TOKEN=ghp_1234567890abcdefghijklmnopqrstuvwxyz
+
+# Slack Token
+SLACK_TOKEN=xoxb-123456789012-123456789012-abcdefghijklmnopqrstuvwx
+
+# Stripe Secret Key
+STRIPE_SECRET_KEY=sk_test_51H8xEXAMPLE1234567890abcdef
+
+# Private RSA Key
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAvEXAMPLEKEYDATA1234567890abcdef
+-----END RSA PRIVATE KEY-----
+
+# Database Credentials
+DB_USERNAME=admin
+DB_PASSWORD=SuperSecretPassword123!
+
+# Basic Auth URL
+https://admin:password123@example.com
+
 # JWT Token
 JWT_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.EXAMPLE.payload.signature
 
 # Twilio API Key
 TWILIO_API_KEY=SK1234567890abcdef1234567890abcdef
+
+# Heroku API Key
+HEROKU_API_KEY=12345678-1234-1234-1234-1234567890ab
+
+# Mailgun API Key
+MAILGUN_API_KEY=key-1234567890abcdef1234567890abcdef
+
+# Azure Storage Connection String
+AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;AccountName=example;AccountKey=EXAMPLEKEY1234567890;EndpointSuffix=core.windows.net
+
+# SSH Private Key
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAA...
+-----END OPENSSH PRIVATE KEY-----
+
+# Firebase URL with secret
+https://example.firebaseio.com/.json?auth=EXAMPLE_SECRET_TOKEN
+
+# PayPal Braintree Token
+BRAINTREE_ACCESS_TOKEN=access_token$production$example$1234567890abcdef
+
+# SendGrid API Key
+SENDGRID_API_KEY=SG.EXAMPLE1234567890abcdef
+
+# Generic Secret
+SECRET_KEY=my_ultra_secret_key_987654321
+
+# OAuth Client Secret
+OAUTH_CLIENT_SECRET=abc123xyz456secret789
