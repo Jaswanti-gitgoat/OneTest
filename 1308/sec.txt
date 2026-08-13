@@ -1,0 +1,5 @@
+# JWT Token
+JWT_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.EXAMPLE.payload.signature
+
+# Twilio API Key
+TWILIO_API_KEY=SK1234567890abcdef1234567890abcdef
